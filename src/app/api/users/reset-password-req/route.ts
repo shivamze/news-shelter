@@ -9,8 +9,8 @@ export async function POST(request: NextRequest){
         await dbConnect();
         const reqBody = await request.json();
 
-        const parsed =resetPasswordRequestSchema.parse(reqBody);
-        if(!parsed){
+        const parsed =resetPasswordRequestSchema.safeParse(reqBody);
+        if(!parsed.success){
             return NextResponse.json(
               { errors: parsed.error.flatten().fieldErrors },
               { status: 400 },

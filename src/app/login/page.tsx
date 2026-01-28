@@ -32,7 +32,7 @@ export default function LoginPage() {
 
       const role = res.data.role;
 
-      setAuthFromServer(role);
+      setAuthFromServer(role, res.data.user, res.data.email);
       
       toast.success("Login successfully");
       router.push("/")

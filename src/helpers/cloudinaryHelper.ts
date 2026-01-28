@@ -1,4 +1,3 @@
-import { promises } from "dns";
 import cloudinary from "../utils/cloudinary";
 import { UploadApiResponse } from "cloudinary";
 
@@ -12,17 +11,27 @@ export async function uploadOnCloudinary(file: File): Promise<UploadApiResponse 
         const buffer = Buffer.from(bytes);
     
         return new Promise((resolve, reject) => {
-            cloudinary.uploader.upload_stream(
+            cloudinary.uploader
+              .upload_stream(
                 {
-                    folder: "news-shelter",
-                    resource_type: "auto",
+                  folder: "news-shelter",
+                  resource_type: "auto",
                 },
                 (error, result) => {
-                    if(error) return reject(error);
-    
-                    resolve(result);
-                }
-            ).end(buffer)
+                  if (error) {
+                    reject(error);
+                    return;
+                  }
+
+                  if (!result) {
+                    resolve(null);
+                    return;
+                  }
+
+                  resolve(result);
+                },
+              )
+              .end(buffer);
         })
     } catch(err: any){
         console.log(err);
