@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import  BlogCard  from "@/src/app/components/blogCard";
+import  BlogCard  from "@/src/app/components/BlogCard";
 import { PenLine } from "lucide-react";
 
 export default function BlogPage() {
