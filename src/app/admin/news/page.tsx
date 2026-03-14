@@ -73,7 +73,7 @@ export default function News(){
       };
 
     return (
-      <div className="text-gray-100 p-2">
+      <div className="text-gray-100 p-2 w-full">
         <div className="bg-blue-700 m-2 p-2 font-bold w-35">
           <Link href="/admin/news/create" className="flex">
             News Post <Plus className="w-5 h-5 my-0.5 ml-2 stroke-1" />
@@ -85,8 +85,8 @@ export default function News(){
             <h2 className="text-lg text-gray-900">Recent News Articles</h2>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full">
+          <div className="overflow-x-auto w-full">
+            <table className="w-full min-w-[900px] overflow-x-auto">
               <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs text-gray-600 uppercase tracking-wider">

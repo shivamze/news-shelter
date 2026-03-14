@@ -91,20 +91,20 @@ export default function AdminDashboard(){
             <h2 className="text-lg text-gray-900">Recent News Articles</h2>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full">
+          <div className="w-full overflow-x-auto">
+            <table className="min-w-[900px] w-full text-sm">
               <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs text-gray-600 uppercase tracking-wider">
                     Title
                   </th>
-                  <th className="px-6 py-3 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs text-gray-600 uppercase tracking-wider hidden md:table-cell">
                     Category
                   </th>
-                  <th className="px-6 py-3 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs text-gray-600 uppercase tracking-wider hidden md:table-cell">
                     Date
                   </th>
-                  <th className="px-6 py-3 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs text-gray-600 uppercase tracking-wider hidden md:table-cell">
                     Status
                   </th>
                   <th className="px-6 py-3 text-right text-xs text-gray-600 uppercase tracking-wider">
@@ -132,19 +132,22 @@ export default function AdminDashboard(){
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 hidden md:table-cell">
                       <span className="inline-flex px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">
                         {article.category}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-600">
-                      {new Date(article.publishedAt).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
+                    <td className="px-6 py-4 text-sm text-gray-600 hidden md:table-cell">
+                      {new Date(article.publishedAt).toLocaleDateString(
+                        "en-US",
+                        {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        },
+                      )}
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 hidden md:table-cell">
                       <span className="inline-flex px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">
                         {article.status}
                       </span>

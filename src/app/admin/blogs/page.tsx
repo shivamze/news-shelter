@@ -35,20 +35,20 @@ export default function Blog() {
   }
 
   return (
-    <div className="text-gray-100 p-2">
-      <div className="bg-blue-700 m-2 p-2 font-bold w-32">
+    <div className="text-gray-100 p-2 sm:p-4">
+      <div className="bg-blue-700 m-2 p-2 font-bold w-fit rounded-md">
         <Link href="/admin/blogs/create" className="flex">
           Blog Post <Plus className="w-5 h-5 my-0.5 ml-2 stroke-1" />
         </Link>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-white rounded-xl shadow-sm">
         <div className="p-6 border-b border-gray-200">
           <h2 className="text-lg text-gray-900">Recent Blog Posts</h2>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full">
+        <div className="overflow-x-auto w-full">
+          <table className="min-w-[900px] w-full">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
                 <th className="px-6 py-3 text-left text-xs text-gray-600 uppercase tracking-wider">
@@ -71,15 +71,15 @@ export default function Blog() {
             <tbody className="divide-y divide-gray-200">
               {blogPosts.map((article) => (
                 <tr key={article._id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
+                  <td className="px-3 py-3 md:px-6 md:py-4 ">
+                    <div className="flex items-center gap-3 min-w-[200px]">
                       <img
                         src={article.imageUrl}
                         alt={article.title}
-                        className="w-12 h-12 rounded object-cover"
+                        className="w-12 h-12 md:w-12 md:h-12 rounded object-cover flex-shrink-0"
                       />
                       <div className="min-w-0">
-                        <p className="text-sm text-gray-900 truncate">
+                        <p className="text-sm md:text-base text-gray-900 truncate">
                           {article.title}
                         </p>
                         <p className="text-xs text-gray-500">
@@ -88,29 +88,35 @@ export default function Blog() {
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-3 py-3 md:px-6 md:py-4">
                     <span className="inline-flex px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">
                       {article.category}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">
+                  <td className="px-3 py-3 md:px-6 md:py-4 text-sm text-gray-600">
                     {new Date(article.publishedAt).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",
                     })}
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-3 py-3 md:px-6 md:py-4">
                     <span className="inline-flex px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">
                       Published
                     </span>
                   </td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center justify-end gap-2">
-                      <Link href={`/admin/blogs/update/${article._id}`} className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
+                  <td className="px-3 py-3 md:px-6 md:py-4">
+                    <div className="flex items-center justify-end gap-1 sm:gap-2">
+                      <Link
+                        href={`/admin/blogs/update/${article._id}`}
+                        className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
+                      >
                         <Edit className="w-4 h-4" />
                       </Link>
-                      <button onClick={() =>handleDelete(article._id)} className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors">
+                      <button
+                        onClick={() => handleDelete(article._id)}
+                        className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                      >
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </div>

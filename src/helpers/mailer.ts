@@ -1,4 +1,7 @@
 import nodemailer from 'nodemailer'
+// import {Resend} from 'resend'
+
+// const resend = new Resend(process.env.RESEND_API_KEY)
 
 interface EmailOptions {
     to: string;
@@ -11,11 +14,12 @@ export const sendEmail = async ({to, subject, html, replyTo}: EmailOptions) => {
     try{
 
         const transporter = nodemailer.createTransport({
-            host: process.env.MAIL_HOST,
-            port: Number(process.env.MAIL_PORT),
+            service: "gmail",
+            // host: process.env.MAIL_HOST,
+            // port: Number(process.env.MAIL_PORT),
             auth: {
-                user: process.env.MAILTRAP_USER,
-                pass: process.env.MAILTRAP_PASS,
+                user: process.env.GMAIL_USER,
+                pass: process.env.GMAIL_PASS,
             }
         })
 
@@ -26,6 +30,15 @@ export const sendEmail = async ({to, subject, html, replyTo}: EmailOptions) => {
             html,
             replyTo,
         })
+
+        // await resend.emails.send({
+        //   from: process.env.MAIL_FROM!,
+        //   to,
+        //   subject,
+        //   html,
+        //   replyTo,
+        // });
+
         console.log('Email sent successfully')
     }catch(err: any){
         throw new Error(err.message)
