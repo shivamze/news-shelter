@@ -202,9 +202,7 @@ New Additions (V2 Scope Expansion)
 
     Rich text editor
 
-6. Comment system
-
-7. Role-based access control
+6. Comment system below the news or blog
 
 👨‍💻 Author
 
