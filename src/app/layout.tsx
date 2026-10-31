@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 import { AuthProvider } from "../context/AuthContext";
+import { Toaster } from "react-hot-toast";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <Toaster position="bottom-center" />
         </AuthProvider>
       </body>
     </html>
